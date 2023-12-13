@@ -281,3 +281,117 @@ console.log(groceryList);
 console.log(groceryList.sort());
 console.log(groceryList.sort(greatestToLeast));
 
+console.clear();
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//if statements
+var amHungry = false;
+
+if (amHungry){
+    console.log("Get me something to eat!");
+}
+else {
+    console.log("I may not be REAL hungry, but I want a snack anyway.");
+};
+
+var age;
+if (age >= 21){
+    //allow user to access the site
+}
+else{
+    console.log("Thank you, goodbye.");
+}
+
+console.clear();
+
+/**
+Let's revisit the temp converter.
+
+Last time we only used variables and we had some interesting arithmetic expressions...
+
+(fah -32) * 5/9 => to convert far to celsius
+(cel * 9/5) + 32 => to convert celsius to fah
+ */
+
+//create variables to hold values
+var fah;//hold fahrenheit values
+var cel;//hold celsius values
+var convertToCelsius = ((fah -32) * 5/9); //when fah is provided, this will give us that degree in celsius
+var convertToFarenheit = ((cel * 9/5) + 32);//when cel is provided, this will give us that degree in farenheit
+
+//console.log(evens.map((x) => x * 2));
+//console.log(convertToCelsius(55));
+//we need to create the instructions for the program to know what to do with fah/cel
+
+convertToCelsius = ((fah) => (fah -32) * 5/9);
+console.log(Math.floor(convertToCelsius(55)));//using math.floor rounds down to commonly used number format
+//what does this look like when we are converting to farenheit?
+convertToFarenheit = ((cel) => (cel * 9/5) + 32);
+console.log(Math.floor(convertToFarenheit(37)));
+
+console.clear();
+//what if we wanted to create a way for a user to proivde input?
+/**
+the prompt function
+Prompt - allows for a user to provide input that can be used as data in the program
+
+syntax: prompt("placeholder")
+    placeholder: hold the string that makes the request the user sees; gives the user directions
+ */
+
+//prompt("What is your name?");//this shows up on the user side (aka html) becuase it needs the user to complete a task.
+
+//example of one way to use prompts
+var user;
+//user = prompt("What is your name?");
+console.log(user);
+console.log("Hello, " + user + "!");
+
+console.clear();
+
+//fah = prompt("What is the current temperature in farenheit?");
+console.log(convertToCelsius(fah));
+console.clear();
+
+//if, else if, else with the temp converter
+/**
+Create a temp converter that does all of the calucations for both fah and cel independently
+
+I only know how to use prompts to get user input, so I will need to do this in parts
+
+step 1: need to know how to convert
+am i going C -> F or F -> C?
+Step 2: telling the program to use a certain variable to calculate the correct temp.
+    if => work for fah to cel conversions only (aka condition 1)
+    else if => work for cel to fah conversions only (aka condition 2)
+    else => kick back and error message because something wasn't put in right
+ */
+
+//step 1: ask how we will convert.
+var conversionDirection = prompt("How do I convert? Enter 'CtoF' for celsius to farenheit or 'FtoC' for farenheit to celsius.")
+//the if statement will do FtoC conversions
+//the else if statemetn will do CtoF conversions
+//the else will kick back and error
+if(conversionDirection == "FtoC"){
+    //then we can convert fah to cel using the varibles created earlier
+    fah = prompt("What is the current temperature?");
+    convertToCelsius = ((fah) => (fah -32) * 5/9);
+    console.log(convertToCelsius(fah));
+}
+else if (conversionDirection == "CtoF"){
+    //we can now convert cel to fah using the variables created earlier
+    cel = prompt("What is the current temperature?");
+    convertToFarenheit = ((cel) => (cel * 9/5) + 32);
+    console.log(convertToFarenheit(cel));
+}
+else{
+    console.log("Please make sure you entered the conversion correctly.");
+}
+
+/*
+Create a mile converter that allows the user to input conversion direction and a distance in miles that will be converted to feet or kilometers or kick back an error message
+
+Conversion factors: 
+1 mile = 5280 feet
+1 mile = 5/8 kilometers
+*/
