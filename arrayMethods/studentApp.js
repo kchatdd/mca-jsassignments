@@ -63,7 +63,8 @@ syntax: toString()
 */
 
 
-// [insert code here]
+var allFood = groceryList.toString();
+console.log(allFood);
 
 
 /** .join
@@ -74,7 +75,8 @@ syntax: array.join(separator)
  */
 
 
-// [insert code here]
+var allFood2 = groceryList.join(", ");
+console.log(allFood2);
 
 
 
@@ -87,15 +89,26 @@ syntax: array.concat(value1, value2, value3,...valueN)
 
 
 
-// [insert code here]
+console.clear();
+// concat() with two arrays
+var allClothing = shirts.concat(bottoms);
+console.log(allClothing);
 
+//concat() with three arrays
+var outfitOptions = bottoms.concat(shirts, shoes);
+console.log(outfitOptions);
+
+//concat() with multiple arrays and values
+var outfitOptions2 = bottoms.concat("sunglasses", shirts, shoes, "Jesus piece");
+console.log(outfitOptions2);
+console.clear();
 
 
 /** .splice
 .splice() allows items in arrays to be changed by removing or replacing existing elements with new ones and returns as a new array
 
 syntax: array.splice(start, deleteCount, item1, ...itemN)
-    start: item index number where the first change is to be made
+    start: item index number, variable (that contains either the item index number or an item in the array), or array item where the first change is to be made
     deleteCount (optional): a number that indicates how many items after the start point should be removed; if there isn't a need to delete elements, this number shoudl be 0
     item1: the first element to be added to the array at the indicated start
     ,...itemN (optional): additional elements to be added to the array after item 1
@@ -105,7 +118,20 @@ real world use: allows for array editing by removing or replacing items (can rep
 
 
 
-// [insert code here]
+var favSadeSongs = ["King of Sorrow", "No Ordinary Love", "Smooth Operator"];
+console.log(favSadeSongs);
+
+favSadeSongs.splice(0, 0, "Kiss of Life", "Jezebel"); //output: ["Kiss of Life", "Jezebel", "King of Sorrow", "No Ordinary Love", "Smooth Operator"]
+console.log(favSadeSongs);
+
+favSadeSongs.splice(1, 1, "Sweetest Taboo");//output: ["Kiss of Life", "Sweetest Taboo", "King of Sorrow", "No Ordinary Love", "Smooth Operator"] (5)
+favSadeSongs.push("Solider of Love", "Is it a Crime");
+console.log(favSadeSongs);
+
+var n = "Kiss of Life";
+favSadeSongs.splice(n, 4, "this got replaced");
+console.log(favSadeSongs);
+console.clear();
 
 
 
@@ -119,8 +145,17 @@ Note: slicing can occur as a console log or be moved into a new array */
 
 
 
+console.log(animals);
+console.log(animals.slice(4));
 
-// [insert code here]
+var notMammals = animals.slice(8);
+console.log(notMammals);
+
+//can you use a string or array value in slice?
+console.log(animals.slice("boar"));// no you cannot.
+
+//can also choose to take items from the "middle"
+console.log(animals.slice(2, 7));
 
 
 
@@ -133,7 +168,11 @@ syntax: array.indexOf(searchElement, fromIndex)
 
 
 
-// [insert code here]
+console.clear();
+animals.splice(2, 0, "goose", "platypus", "iguana", "boar");
+console.log(animals);
+console.log(animals.indexOf("boar"));//found the first occurrence of "boar" at 5
+console.log(animals.indexOf("boar", 6));
 
 
 
@@ -147,7 +186,7 @@ syntax: array.lastIndexOf(searchElement, fromIndex)
 
 
 
-// [insert code here]
+console.log(animals.lastIndexOf("iguana"));
 
 
 
@@ -155,15 +194,23 @@ syntax: array.lastIndexOf(searchElement, fromIndex)
 .map() allows for the modification of an array through an action being iteratated across all items contained in teh array
 
 syntax: array.map(callbackFn, thisArg)
-    callbackFun: the function to be executed for each element in the array
+    callbackFun: the function to be executed for each element in the array; this can also be "saved" in a variable
     thisArg (optional): a value to use as this when executing a callbackFn (we will not use this just yet)
 Note: There is a more complex way to use this array method that involves functions - we will look into it later
  */
 
 
 
+console.clear();
+console.log(evens);
+console.log(evens.map((x) => x * 2));
+//(x + 3) * 3
+// => (x + 3) * 3
+// (x) => (x + 3) * 3
+console.log(evens.map((x) => (x + 3) * 3));
 
-// [insert code here]
+var expression = ((x) => (x + 3) * 3);
+console.log(evens.map(expression));
 
 
 
@@ -177,12 +224,30 @@ syntax: array.some(callbackFn, thisArg)
 
 
 
-// [insert code here]
+console.clear();
+// using .find with number data types
+// commonly used placeholder/variable is element. You will sometimes see this as "element" but most often you will see it as "e". This placeholder/variable is similiar to what we saw in .map where x represented each item/element in the array
+/*
+There are multiple ways to represent a variable.
+in an arry: item = x = element = e
 
+var equalToZero = (x) => x == 0
+var equalToZero = (element) => element == 0
+var equalToZero = (e) => e == 0
+*/
+
+var equalToZero = ((e) => e == 0);
+var greaterThanTen = ((e) => e > 10);
+var lessThanSix = ((e) => e < 6);
+
+console.log(evens);
+console.log(evens.find(equalToZero));
+console.log(evens.find(greaterThanTen));
+console.log(evens.find(lessThanSix));
 
 
 /** findIndex
-.findIndex() returns the index of the first element in the array that satisfies the callbackFn; if no value is present, returns undefined
+.findIndex() returns the index of the first element in the array that satisfies the callbackFn; if no value is present, returns -1
 
 syntax: array.some(callbackFn, thisArg)
     callbackFn: a function to execute for each element of the array
@@ -191,7 +256,9 @@ syntax: array.some(callbackFn, thisArg)
 
 
 
-// [insert code here]
+console.log(evens.findIndex(equalToZero));
+console.log(evens.findIndex(greaterThanTen));
+console.log(evens.findIndex(lessThanSix));
 
 
 
@@ -206,6 +273,11 @@ syntax: array.sort(compareFn)
 */
 
 
+var greatestToLeast = ((x) => x > 0);
 
-// [insert code here]
+console.clear();
+groceryList.push("chicken", "strawberries", "plums", "peaches", "toaster pasteries");
+console.log(groceryList);
+console.log(groceryList.sort());
+console.log(groceryList.sort(greatestToLeast));
 
