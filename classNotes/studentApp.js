@@ -368,25 +368,25 @@ Step 2: telling the program to use a certain variable to calculate the correct t
  */
 
 //step 1: ask how we will convert.
-var conversionDirection = prompt("How do I convert? Enter 'CtoF' for celsius to farenheit or 'FtoC' for farenheit to celsius.")
+//var conversionDirection = prompt("How do I convert? Enter 'CtoF' for celsius to farenheit or 'FtoC' for farenheit to celsius.")
 //the if statement will do FtoC conversions
 //the else if statemetn will do CtoF conversions
 //the else will kick back and error
-if(conversionDirection == "FtoC"){
-    //then we can convert fah to cel using the varibles created earlier
-    fah = prompt("What is the current temperature?");
-    convertToCelsius = ((fah) => (fah -32) * 5/9);
-    console.log(convertToCelsius(fah));
-}
-else if (conversionDirection == "CtoF"){
-    //we can now convert cel to fah using the variables created earlier
-    cel = prompt("What is the current temperature?");
-    convertToFarenheit = ((cel) => (cel * 9/5) + 32);
-    console.log(convertToFarenheit(cel));
-}
-else{
-    console.log("Please make sure you entered the conversion correctly.");
-}
+// if(conversionDirection == "FtoC"){
+//     //then we can convert fah to cel using the varibles created earlier
+//     fah = prompt("What is the current temperature?");
+//     convertToCelsius = ((fah) => (fah -32) * 5/9);
+//     console.log(convertToCelsius(fah));
+// }
+// else if (conversionDirection == "CtoF"){
+//     //we can now convert cel to fah using the variables created earlier
+//     cel = prompt("What is the current temperature?");
+//     convertToFarenheit = ((cel) => (cel * 9/5) + 32);
+//     console.log(convertToFarenheit(cel));
+// }
+// else{
+//     console.log("Please make sure you entered the conversion correctly.");
+// }
 
 /*
 Create a mile converter that allows the user to input conversion direction and a distance in miles that will be converted to feet or kilometers or kick back an error message
@@ -395,3 +395,209 @@ Conversion factors:
 1 mile = 5280 feet
 1 mile = 5/8 kilometers
 */
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//Tip Calculator
+/**
+Math expressions for calculator:
+decimal for percentage = (tip percentage / 100)
+tipAmount = decimal for percentage * foodCost
+totalToPay = tipAmount + foodCost
+
+Step 1: determine the amount (percentage to tip) for tipping;
+Step 1a: convert this tip amount to the decimal
+Step 2: get foodCost amount
+Step 3: find the dollar amount for the tip based on the decimal calculated and the foodCost
+Step 4: add it all together 
+ */
+
+// console.clear();
+// var foodCost;
+// var tipAmount;
+// var totalToPay;
+
+// var tipPercent = prompt("Enter the percent you want to tip your server (do not add the % sign):");
+
+// if (tipPercent > 0){
+//     percentDecimal = (tipPercent / 100);
+//     console.log(percentDecimal);
+//     console.log(typeof percentDecimal);
+    
+//     foodCost = prompt("What is the cost of your food (be sure to include the cents in your response)?");
+//     console.log(foodCost);
+//     console.log(typeof foodCost);
+    
+//     tipAmount = percentDecimal * foodCost;
+//     console.log(tipAmount);
+//     console.log(typeof tipAmount);
+    
+//     totalToPay = (tipAmount + parseFloat(foodCost));
+//     console.log("The total amount you will pay is: $" + totalToPay.toFixed(2));
+//     console.log(typeof totalToPay);
+// }
+// else {
+//     foodCost = prompt("What is the cost of your food (be sure to include the cents in your response)?");
+//     console.log("Geez, you're cheap! No tip isn't cool, but the total amount you will pay is: $" + foodCost);
+// };
+
+/*parse allows us to change the data type
+parseInt = change a string into a whole number (ex. 1, 67, 9872648)
+parseFloat = change a string into a decimal (ex. 0.56, 345.93, 96847.07968575)
+*/
+
+
+//Final Code
+
+console.clear();
+var foodCost;
+var tipAmount;
+var totalToPay;
+
+//var tipPercent = prompt("Enter the percent you want to tip your server (do not add the % sign):");
+
+// if (tipPercent > 0){
+//     var percentDecimal = (tipPercent / 100);
+//     foodCost = prompt("What is the cost of your food (be sure to include the cents in your response)?");
+//     tipAmount = percentDecimal * foodCost;
+//     totalToPay = (tipAmount + parseFloat(foodCost));
+//     console.log("The total amount you will pay is: $" + totalToPay.toFixed(2));
+// }
+// else {
+//     foodCost = prompt("What is the cost of your food (be sure to include the cents in your response)?");
+//     console.log("Geez, you're cheap! No tip isn't cool, but the total amount you will pay is: $" + foodCost);
+// };
+console.clear();
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//for loop: completes task through the entire dataset until the condition is false
+
+for (let i = 5; i <=100; i+=10){
+    console.log(i);
+}
+
+var coders = ["Jared", "Victoria", "Jordan", "Emmanuel", "Robert", "Derrick", "Mr. Perry"];
+for (var i = 0; i < coders.length; i++){
+    var message = coders[i] + " usually loves coding, but today, possibly wants a break.";
+    console.log(message);
+}
+
+console.clear();
+
+// var i = 0; 
+// while (i <= 10){
+//     console.log(i);
+//     i++;
+// };
+
+// while (i<=10){
+//     i = 1;
+//     console.log(i);
+//     i++;
+// };
+
+//foreach loops - used only with arrays
+coders.forEach(coder => console.log(coder + " loves coding!"));
+
+coders.forEach(coder => {console.log(coder + " maybe loves coding")})
+
+console.clear();
+
+// function addTwoNumbers(){
+//     console.log(5 + 7);
+// };
+
+// addTwoNumbers();
+// console.log("chicken");
+// addTwoNumbers();
+
+// function addTwoNumbers(num){
+//     console.log(num + 7);
+// };
+
+// addTwoNumbers(5);
+// addTwoNumbers(-22);
+// addTwoNumbers(10);
+
+// function addTwoNumbers(a, b){
+//     console.log(a + b);
+// };
+// addTwoNumbers(5, 9);
+// addTwoNumbers(8, 8);
+// addTwoNumbers(86748, -833728);
+
+// function addTwoNumbers(a, b){
+//     var sum = a + b;
+//     console.log(sum);
+//     return sum;
+// };
+
+// addTwoNumbers(8, -10);
+
+function addTwoNumbers(a=1, b=2){
+    var sum = a + b;
+    console.log(sum);
+    return sum;
+}
+
+addTwoNumbers();
+addTwoNumbers(10);
+addTwoNumbers(12,10);
+
+console.clear();
+
+//Objects
+//bracket notation
+var person = {
+    fName: "Dwayne",
+    lName: "Johson",
+    alias: "The Rock",
+    "occupation": "President of the United States", 
+    "other jobs": ["wrestler", "actor", "singer"],
+    age: 51,
+    isStrong: true
+};
+
+console.log(person.alias);
+console.log(person.age);
+console.log(person.isStrong);
+console.log(person["other jobs"]);//this must be used when calling for an object item that is stored in an array
+console.log(person["other jobs"][1]);
+
+var work = "occupation";
+//console.log(person.work);
+console.log(work);
+console.log(person[work]);
+console.log(person["occupation"]);
+var occ = person["occupation"];
+console.log(occ);
+
+
+//to update a value in an object, follow the same process for updating a variable
+console.log(person.age);
+person.age = 52;
+console.log(person.age);
+
+//to add a new value in an object call the object then add the new key folowed by the value
+
+console.log(person);
+person.finishingMove = "The People's Elbow";
+console.log(person);
+
+//to delete a value in an object use the command delete followed by the object.key
+delete person.finishingMove;
+console.log(person);
+
+person.quote = function(){
+    var message = "Can you SMELL what The Rock...is cooking?";
+    console.log(message);
+    return message;
+}
+
+console.log(person);
+
+
+
+
+
+
