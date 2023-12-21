@@ -55,6 +55,17 @@ console.log(lancasterFamilyNames2);
 //Creating STARobinson
 //pulling "S", "T", and "A" names
 
+/*
+var fNameInitial = prompt("What is the initial of the first name for the baby?);
+var firstNames = allNames.filter(word => word[0] == fNameInitial);
+
+var firstNamesIdx = Math.floor(Math.random() * firstNames.length);
+
+var firstNameOpt1 = firstNames[firstNamesIdx];
+console.log(firstNameOpt1....);
+
+*/
+
 var sNames = allNames.filter(word => word[0] == "S");
 var tNames = allNames.filter(word => word[0] == "T");
 var aNames = allNames.filter(word => word[0] == "A");

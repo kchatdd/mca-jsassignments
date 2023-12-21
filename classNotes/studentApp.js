@@ -596,8 +596,69 @@ person.quote = function(){
 
 console.log(person);
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+console.clear();
+/*Create a temp converter that does all of the calucations for both fah and cel independently
+
+I only know how to use prompts to get user input, so I will need to do this in parts
+
+step 1: need to know how to convert
+am i going C -> F or F -> C?
+Step 2: telling the program to use a certain variable to calculate the correct temp.
+    if => work for fah to cel conversions only (aka condition 1)
+    else if => work for cel to fah conversions only (aka condition 2)
+    else => kick back and error message because something wasn't put in right
+ */
+
+// //step 1: ask how we will convert.
+// var conversionDirection = prompt("How do I convert? Enter 'CtoF' for celsius to farenheit or 'FtoC' for farenheit to celsius.")
+// // the if statement will do FtoC conversions
+// // the else if statemetn will do CtoF conversions
+// // the else will kick back and error
+// if(conversionDirection == "FtoC"){
+//     //then we can convert fah to cel using the varibles created earlier
+//     fah = prompt("What is the current temperature?");
+//     convertToCelsius = ((fah) => (fah -32) * 5/9);
+//     console.log(convertToCelsius(fah));
+// }
+// else if (conversionDirection == "CtoF"){
+//     //we can now convert cel to fah using the variables created earlier
+//     cel = prompt("What is the current temperature?");
+//     convertToFarenheit = ((cel) => (cel * 9/5) + 32);
+//     console.log(convertToFarenheit(cel));
+// }
+// else{
+//     console.log("Please make sure you entered the conversion correctly.");
+// }
 
 
+//for the update, use functions inside of the else/if to do the calculations
+var conversionDirection = prompt("How do I convert? Enter 'CtoF' for celsius to farenheit or 'FtoC' for farenheit to celsius.");
+var cel;
+var fah;
 
+function farToCel(){
+    fah = prompt("What is the current temperature?");
+    convertToCelsius = ((fah) => (fah -32) * 5/9);
+    console.log(convertToCelsius(fah));
+};
+
+function celToFar(){
+    cel = prompt("What is the current temperature?");
+    convertToFarenheit = ((cel) => (cel * 9/5) + 32);
+    console.log(convertToFarenheit(cel));
+};
+
+if(conversionDirection == "FtoC"){
+    //instead of typing in the steps, just drop the function
+    farToCel();
+}
+else if (conversionDirection == "CtoF"){
+    //instead of typing in the steps, just drop the function
+    celToFar();
+}
+else{
+    console.log("Please make sure you entered the conversion correctly.");
+}
 
 
