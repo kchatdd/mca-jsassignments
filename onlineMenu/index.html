@@ -25,42 +25,7 @@
             <!-- This section will be empty until we complete the code in JS since our JS will populate the menu cards based on the objects we make. Right now, we just need to create containers that will hold all of the food cards. -->
             <div class="container">
                 <h2 class="menu-heading text-capitalize">Our Menu</h2>
-                <div class="menu-div" id="appetizersDiv">
-                    <!-- We are buliding out what our final JS-created menu card will look like in HTML so we can see as we build. -->
-                    <img src="images/acksaltpop.jpg" alt="ackee and saltfish plantain poppers" class="img-fluid menu-img card-image-top"/>
-                    <div class="card-body">
-                        <h4 class="card-title text-capitalize item-item">Name of Item</h4>
-                        <p class="card-text text-uppercase item-desc">Desc of Item</p>
-                    </div>
-                    <footer class="card-footer">
-                        <p class="card-text item-price">$dollars</p>
-                        <div class="buttons-div d-flex">
-                            <button 
-                            class="btn btn-primary cart-btn text-capitalize"
-                            id="btnNumberOfItem"
-                            data-id=""
-                            data-price=""
-                            data-qty=""
-                            data-item=""
-                            >add to cart</button>
-                            <div class="qty-div">
-                                <button
-                                class="btn btn-secondary btn-subtract"
-                                id="btnSubtractItemId"
-                                data-id=""
-                                data-qty=""
-                                > - </button>
-                                <span class="quantity" id="quantityItemId">Number</span>
-                                <button
-                                class="btn btn-secondary btn-add"
-                                id="btnAddItemId"
-                                data-id=""
-                                data-qty=""
-                                > + </button>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
+                <div class="menu-div" id="appetizersDiv"></div>
                 <div class="menu-div" id="entreesDiv"></div>
                 <div class="menu-div" id="drinksDiv"></div>
                 <div class="menu-div" id="dessertsDiv"></div>
@@ -74,7 +39,7 @@
                         <div class="subtotal-div">
                             <!-- The tip amount selector is a form that receives input from the dropdown menu or number selection. The confirm button is the same as a submit -->
                             <form action="#">
-                                <h2 class="form-heading text-capitalize">Order Subtotal: $<span id="cartSubtotal">0.00</span></h2>
+                                <h2 class="form-heading text-capitalize">Order Subtotal: $<span id="cartSubtotal">50.00</span></h2>
                                 <!-- dropdown for tip amount selection -->
                                 <select name="tipAmt" id="tipAmt">
                                     <option value="">Select Tip</option>

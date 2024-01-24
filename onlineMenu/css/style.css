@@ -45,6 +45,10 @@ h1{
     border: 3px solid red;
 }
 
+.menu-section{
+    margin: 20px 0;
+}
+
 .menu-heading{
     font-family: var(--headerFont);
     font-size: 3em;
@@ -79,7 +83,31 @@ h1{
     color: black;
 }
 
+.item-item{
+    color: var(--quaternary);
+    font-weight: 500;
+}
 
+.item-price{
+    color: var(--white);
+    font-weight: 700;
+}
+
+.subtotal-div, .ticket-div{
+    padding: 15px;
+    background-color: whitesmoke;
+    border: 3px solid var(--secondary);
+    border-radius: 10px;
+}
+
+#receipt-table{
+    padding: 10px 0;
+    width: 100%;
+}
+
+.footer{
+    padding: 10px 0;
+}
 
 #appetizersDiv{
     background-color: green;
