@@ -108,19 +108,3 @@ h1{
 .footer{
     padding: 10px 0;
 }
-
-#appetizersDiv{
-    background-color: green;
-}
-
-#entreesDiv{
-    background-color: blue;
-}
-
-#drinksDiv{
-    background-color: violet;
-}
-
-#dessertsDiv{
-    background-color: orange;
-}

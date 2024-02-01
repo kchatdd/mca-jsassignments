@@ -2,16 +2,18 @@ const confirmBtn = document.getElementById("confirmBtn");
 const totalDisplay = document.getElementById("total");
 const cartSubtotal = document.getElementById("cartSubtotal");
 const menuDivs = document.querySelectorAll(".menu-div");
+const receipt = document.getElementById("receipt");
 
 let subtotal = 0;
 let tax = 0.07;
 
+let receiptArray = [];
 const menuType = [
     "appetizers", 
     "entrees",
     "drinks",
     "desserts"
-]
+];
 
 //array of menu objects
 let menuItems = [
@@ -44,7 +46,7 @@ let menuItems = [
     },
     {
         id: 4,
-        type: "appeitzers",
+        type: "appetizers",
         item: "mini beef patties",
         desc: "6 mini Jamacian beef patties", 
         imgUrl: "minibeefpatties.jpg", 
@@ -186,9 +188,51 @@ const getTotal =()=> {
     let total = isNaN(tipAmt) ? subtotal + taxTotal + otherAmt : subtotal + taxTotal + receiptTip;
     console.log(`this is the total to pay: ${total}`);
 
+    theSubtotal.innerText = subtotal;
     taxDisplay.innerText = taxTotal.toFixed(2);
     yourTip.innerText = receiptTip.toFixed(2);
     totalDisplay.innerText = total.toFixed(2);
+}
+
+//make a receipt that populates food order information based on the menu items listed in the array
+const makeReceipt = (obj, el)=>  {
+    const tableRow = document.createElement("tr");
+    tableRow.classList.add("receipt-item");
+
+    const receiptChoice = document.createElement("td");
+    receiptChoice.classList.add("receipt-choice", "text-center");
+    receiptChoice.innerText = obj.item;
+
+    const receiptQty = document.createElement("td");
+    receiptQty.classList.add("recepit-qty", "text-center");
+    receiptQty.setAttribute("id", `qty${obj.id}`);
+    receiptQty.innerText = obj.qty;
+
+    const receiptPrice = document.createElement("td");
+    receiptPrice.classList.add("receipt-price", "text-center");
+    receiptPrice.innerText = obj.price;
+
+    const itemSubtotal = document.createElement("td");
+    itemSubtotal.classList.add("item-subtotal", "text-center");
+    itemSubtotal.setAttribute("id", `subTotal${obj.id}`);
+    itemSubtotal.innerText = obj.itemTotal;
+
+    tableRow.appendChild(receiptChoice);
+    tableRow.appendChild(receiptQty);
+    tableRow.appendChild(receiptPrice);
+    tableRow.appendChild(itemSubtotal);
+
+    el.appendChild(tableRow)
+};
+
+const updateReceipt = (obj, qty, itemTotal) =>{
+    const receiptQty = document.getElementById(`qty${obj.id}`)
+    receiptQty.innerText = qty;
+
+    const itemSubtotal = document.getElementById(`subTotal${obj.id}`);
+    itemSubtotal.innerText = itemTotal.toFixed(2);
+
+    console.log(receiptArray);
 }
 
 //create menu type labels for each category of food
@@ -282,3 +326,69 @@ menuItems.forEach(item => {
     }
 })
 
+const cartButtons = document.querySelectorAll(".cart-btn")
+
+//make the button for Add to Cart work
+cartButtons.forEach(button => {
+    const price = parseFloat(button.getAttribute("data-price"))
+    const item = button.getAttribute("data-item")
+    const id = parseFloat(button.getAttribute("data-id"))
+
+    button.addEventListener("click", () => {
+        console.log("the add to cart button has been clicked.")
+        let qty;
+        for (let i = 0; i < menuItems.length; i++){
+            menuItems[i].id == id ? qty = menuItems[i].qty : null;
+        }
+        //we need to be able to add items to the receipt
+        addItems(price, qty, item, id);
+    })
+})
+
+const addItems = (price, qty, item, id) => {
+    let itemObj = {
+        id,
+        item,
+        qty,
+        price,
+        itemTotal: qty * price
+    }
+
+    receiptArray = [...receiptArray, itemObj]
+    makeReceipt(itemObj, receipt)
+
+    subtotal+= itemObj.itemTotal;
+    cartSubtotal.innerText = subtotal.toFixed(2);
+}
+
+const btnSubtract = document.querySelectorAll(".btn-subtract");
+const btnAdd = document.querySelectorAll(".btn-add");
+
+btnSubtract.forEach(button => {
+    button.addEventListener("click", () => {
+        const btnId = parseFloat(button.getAttribute("data-id"));
+        const spanQty = document.getElementById(`quantity${btnId}`);
+
+        for (let i = 0; i < menuItems.length; i++) {
+            if(menuItems[i].id == btnId && menuItems[i].qty > 0){
+                menuItems[i].qty-=1
+                spanQty.innerText = menuItems[i].qty
+            }
+        }
+    })
+})
+
+btnAdd.forEach(button => {
+    button.addEventListener("click", () => {
+        const btnId = parseFloat(button.getAttribute("data-id"));
+        const spanQty = document.getElementById(`quantity${btnId}`);
+
+        for (let i = 0; i < menuItems.length; i++){
+            if (menuItems[i].id == btnId && menuItems[i].qty < 20 && cartButtons[i].dataset.id == btnId) {
+                menuItems[i].qty+=1
+                cartButtons[i].setAttribute("data-qty", menuItems[i].qty)
+                spanQty.innerText = menuItems[i].qty;
+            }
+        }
+    })
+})
